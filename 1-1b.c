@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 
 
 // Write a C program that allocates a 1D array of length n which is
@@ -9,11 +10,13 @@
 // minimum values. (You can use e.g. the rand function from stdlib.h.)
 
 int main(int argc, char *argv[]){
+
 	// set random seed
 	srand(time(NULL));
 
 	// initialize variables
 	int n, i, *v;
+	bool printArray = true;
 
 	// scanf for input
 	printf("Enter number of elements: ");
@@ -49,14 +52,22 @@ int main(int argc, char *argv[]){
 		}
 	}
 
+
+	
 	// print the array
-	for (i = 0; i < n; i++)
+	if (printArray)
 	{
-		printf("%d,",v[i]);
+		printf("[");
+		for (i = 0; i < n; i++)
+		{
+			printf("%d,",v[i]);
+		}
+		printf("]");
 	}
 	
+	
 	// print the min and max values
-	printf("minimum was %d, maximum was %d",minimum,maximum);
+	printf("\nminimum was %d\nmaximum was %d",minimum,maximum);
 
 	// free up the memory
 	free(v);
